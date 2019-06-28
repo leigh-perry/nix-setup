@@ -12,7 +12,6 @@ stdenv.mkDerivation rec {
 
   local-jdk11 =
     callPackage ./shared-jdk.nix {
-      # see https://mirror.bazel.build/openjdk/index.html
       inherit jdk-name;
       inherit jdk-sha;
     };
