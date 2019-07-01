@@ -8,7 +8,7 @@ let
 in
 
 stdenv.mkDerivation rec {
-  name = "dev-scala";
+  name = "dev-iag";
 
   local-jdk11 =
     callPackage ../jdk/shared-jdk.nix {
@@ -21,10 +21,13 @@ stdenv.mkDerivation rec {
     gettext
     local-jdk11
     sbt
+    awscli
+    terraform_0_12
     jq
     figlet
   ];
 
+  # TODO layer on top of dev-scala
   shellHook = ''
     mkdir -p ~/links
 
@@ -34,6 +37,8 @@ stdenv.mkDerivation rec {
 
     # TODO find way of overriding sbt jdk at system level
     #export SBT_OPTS="-java-home ~/links/jdk11"
+
+    export AWS_COMPLETER="${awscli}/share/zsh/site-functions/aws_zsh_completer.sh"
 
     figlet -w 160 "${name}"
     zsh
