@@ -16,11 +16,16 @@ stdenv.mkDerivation rec {
       inherit jdk-sha;
     };
 
+  sbt-jdk11 =
+    sbt.override {
+      jre = local-jdk11;
+    };
+
   buildInputs = [
     git
     gettext
     local-jdk11
-    sbt
+    sbt-jdk11
     awscli
     terraform_0_12
     jq
@@ -30,15 +35,6 @@ stdenv.mkDerivation rec {
   # TODO layer on top of dev-scala
   # TODO set up proxy here
   shellHook = ''
-    mkdir -p ~/links
-
-    # support intellij sdk location
-    unlink ~/links/jdk11
-    ln -s ${local-jdk11}/ ~/links/jdk11
-
-    # TODO find way of overriding sbt jdk at system level
-    #export SBT_OPTS="-java-home ~/links/jdk11"
-
     export AWS_COMPLETER="${awscli}/share/zsh/site-functions/aws_zsh_completer.sh"
 
     figlet -w 160 "${name}"

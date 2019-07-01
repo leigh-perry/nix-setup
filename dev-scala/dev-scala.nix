@@ -16,25 +16,21 @@ stdenv.mkDerivation rec {
       inherit jdk-sha;
     };
 
+  sbt-jdk11 =
+    sbt.override {
+      jre = local-jdk11;
+    };
+
   buildInputs = [
     git
     gettext
     local-jdk11
-    sbt
+    sbt-jdk11
     jq
     figlet
   ];
 
   shellHook = ''
-    mkdir -p ~/links
-
-    # support intellij sdk location
-    unlink ~/links/jdk11
-    ln -s ${local-jdk11}/ ~/links/jdk11
-
-    # TODO find way of overriding sbt jdk at system level
-    #export SBT_OPTS="-java-home ~/links/jdk11"
-
     figlet -w 160 "${name}"
     zsh
   '';
