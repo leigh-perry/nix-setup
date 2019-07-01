@@ -28,6 +28,7 @@ stdenv.mkDerivation rec {
   ];
 
   # TODO layer on top of dev-scala
+  # TODO set up proxy here
   shellHook = ''
     mkdir -p ~/links
 
