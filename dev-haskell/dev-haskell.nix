@@ -1,4 +1,3 @@
-# TODO https://nixos.wiki/wiki/FAQ/Pinning_Nixpkgs
 { pkgs ? import <nixpkgs> {} }:
 with pkgs;
 
@@ -9,7 +8,7 @@ let
 in
 
 stdenv.mkDerivation rec {
-  name = "dev-iag";
+  name = "dev-haskell";
 
   local-jdk11 =
     callPackage ../jdk/shared-jdk.nix {
@@ -25,19 +24,18 @@ stdenv.mkDerivation rec {
   buildInputs = [
     git
     gettext
-    local-jdk11
-    sbt-jdk11
-    awscli
-    terraform_0_12
+    ghc
+    cabal-install
+    stack
+    haskellPackages.ghcid
+    hlint
+    haskellPackages.hindent
+    cabal2nix
     jq
     figlet
   ];
 
-  # TODO layer on top of dev-scala
-  # TODO set up proxy here
   shellHook = ''
-    export LPZSH_AWS_COMPLETER="${awscli}/share/zsh/site-functions/aws_zsh_completer.sh"
-
     figlet -w 160 "${name}"
     zsh
   '';
