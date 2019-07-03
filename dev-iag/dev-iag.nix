@@ -39,9 +39,9 @@ stdenv.mkDerivation rec {
 
     # in .zshrc:
     #
-    # if [[ ! -z ${LPZSH_AWS_COMPLETER} ]]; then
+    # if [[ ! -z <DOLLAR>{LPZSH_AWS_COMPLETER} ]]; then
     #   echo Enabling awscli completion
-    #   source ${LPZSH_AWS_COMPLETER}
+    #   source <DOLLAR>{LPZSH_AWS_COMPLETER}
     # fi
 
     export LPZSH_AWS_COMPLETER="${awscli}/share/zsh/site-functions/aws_zsh_completer.sh"

@@ -26,6 +26,7 @@ stdenv.mkDerivation rec {
     gettext
     local-jdk11
     sbt-jdk11
+    nodejs
     jq
     figlet
   ];
