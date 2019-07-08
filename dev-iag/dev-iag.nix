@@ -25,6 +25,7 @@ stdenv.mkDerivation rec {
   buildInputs = [
     git
     gettext
+    tree
     local-jdk11
     sbt-jdk11
     awscli
