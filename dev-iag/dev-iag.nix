@@ -28,6 +28,7 @@ stdenv.mkDerivation rec {
     tree
     local-jdk11
     sbt-jdk11
+    confluent-platform
     awscli
     terraform_0_12
     jq
