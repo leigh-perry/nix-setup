@@ -25,6 +25,7 @@ stdenv.mkDerivation rec {
   buildInputs = [
     git
     gettext
+    tmux
     ghc
     cabal-install
     stack

@@ -23,7 +23,8 @@ stdenv.mkDerivation rec {
     };
 
   buildInputs = [
-    git
+    # TODO debug credentials for git
+    # git
     gettext
     tree
     local-jdk11
