@@ -29,6 +29,7 @@ stdenv.mkDerivation rec {
     tree
     local-jdk11
     sbt-jdk11
+    maven
     confluent-platform
     awscli
     terraform_0_12
@@ -50,6 +51,7 @@ stdenv.mkDerivation rec {
     # fi
     export LPZSH_AWS_COMPLETER="${awscli}/share/zsh/site-functions/aws_zsh_completer.sh"
 
+    # TODO docker-compose completion not working
     # in .zshrc:
     #
     # if [[ ! -z <DOLLAR>{LPZSH_DOCKER} ]]; then
