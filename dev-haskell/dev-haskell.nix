@@ -34,6 +34,7 @@ stdenv.mkDerivation rec {
     hpkgs.hindent
     cabal2nix
     jq
+    shellcheck
     figlet
   ];
 

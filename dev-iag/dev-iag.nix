@@ -36,6 +36,7 @@ stdenv.mkDerivation rec {
     docker
     docker-compose
     jq
+    shellcheck
     figlet
   ];
 
