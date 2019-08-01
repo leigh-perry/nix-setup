@@ -9,7 +9,7 @@ let
 in
 
 stdenv.mkDerivation rec {
-  name = "dev-iag";
+  name = "dev-kafka";
 
   local-jdk11 =
     callPackage ../jdk/shared-jdk.nix {
