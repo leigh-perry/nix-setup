@@ -5,7 +5,6 @@ let
   cfg = (import ../jdk/jdk11.nix);
   jdk-name = cfg.jdk-name;
   jdk-sha = cfg.jdk-sha;
-  hpkgs = haskellPackages;
 in
 
 stdenv.mkDerivation rec {
@@ -29,9 +28,9 @@ stdenv.mkDerivation rec {
     ghc
     cabal-install
     stack
-    hpkgs.ghcid
+    haskellPackages.ghcid
     hlint
-    hpkgs.hindent
+    haskellPackages.hindent
     cabal2nix
     jq
     shellcheck
