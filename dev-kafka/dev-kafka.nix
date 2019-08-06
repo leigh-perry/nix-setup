@@ -26,7 +26,11 @@ stdenv.mkDerivation rec {
     # TODO debug credentials for git
     # git
     gettext
-    tree
+    tmux
+    jq
+    shellcheck
+    figlet
+
     local-jdk11
     sbt-jdk11
     maven
@@ -35,9 +39,6 @@ stdenv.mkDerivation rec {
     terraform_0_12
     docker
     docker-compose
-    jq
-    shellcheck
-    figlet
   ];
 
   # TODO layer on top of dev-scala

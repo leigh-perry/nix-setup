@@ -24,11 +24,14 @@ stdenv.mkDerivation rec {
   buildInputs = [
     git
     gettext
+    tmux
+    jq
+    shellcheck
+    figlet
+
     local-jdk11
     sbt-jdk11
     nodejs
-    jq
-    figlet
   ];
 
   shellHook = ''

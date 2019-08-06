@@ -8,6 +8,10 @@ stdenv.mkDerivation rec {
     git
     gettext
     tmux
+    jq
+    shellcheck
+    figlet
+
     ghc
     cabal-install
     stack
@@ -15,9 +19,6 @@ stdenv.mkDerivation rec {
     haskellPackages.hindent
     haskellPackages.ghcid
     cabal2nix
-    jq
-    shellcheck
-    figlet
   ];
 
   shellHook = ''
