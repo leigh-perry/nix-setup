@@ -22,7 +22,7 @@ stdenv.mkDerivation rec {
     };
 
   buildInputs = [
-    git
+    #git
     gettext
     tmux
     jq
