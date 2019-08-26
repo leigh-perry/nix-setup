@@ -1,4 +1,3 @@
-# TODO https://nixos.wiki/wiki/FAQ/Pinning_Nixpkgs
 { pkgs ? import <nixpkgs> {} }:
 with pkgs;
 
@@ -33,8 +32,10 @@ stdenv.mkDerivation rec {
 
     local-jdk11
     sbt-jdk11
+    gradle
     maven
     confluent-platform
+    kafkacat
     awscli
     terraform_0_12
     docker

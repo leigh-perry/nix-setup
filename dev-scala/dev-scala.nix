@@ -22,7 +22,8 @@ stdenv.mkDerivation rec {
     };
 
   buildInputs = [
-    git
+    # TODO debug credentials for git
+    # git
     gettext
     tmux
     jq
@@ -31,6 +32,10 @@ stdenv.mkDerivation rec {
 
     local-jdk11
     sbt-jdk11
+    gradle
+    maven
+    
+    # For scalajs
     nodejs
   ];
 
