@@ -34,8 +34,11 @@ stdenv.mkDerivation rec {
     sbt-jdk11
     gradle
     maven
-    awscli
-    terraform_0_12
+
+    # inhibit since docker brings in python 3 which breaks awscli
+    #awscli
+    #terraform_0_12
+
     docker
     docker-compose
 

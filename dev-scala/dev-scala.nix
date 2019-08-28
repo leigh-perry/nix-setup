@@ -36,8 +36,10 @@ stdenv.mkDerivation rec {
     maven
     awscli
     terraform_0_12
-    docker
-    docker-compose
+
+    # inhibit docker since it brings in python 3 which breaks awscli
+    #docker
+    #docker-compose
     
     # For scalajs
     nodejs
