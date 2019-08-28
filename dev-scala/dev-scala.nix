@@ -34,12 +34,38 @@ stdenv.mkDerivation rec {
     sbt-jdk11
     gradle
     maven
+    awscli
+    terraform_0_12
+    docker
+    docker-compose
     
     # For scalajs
     nodejs
   ];
 
   shellHook = ''
+
+    # in .zshrc:
+    #
+    # if [[ ! -z <DOLLAR>{LPZSH_AWS_COMPLETER} ]]; then
+    #   echo Enabling awscli completion
+    #   source <DOLLAR>{LPZSH_AWS_COMPLETER}
+    # fi
+    export LPZSH_AWS_COMPLETER="${awscli}/share/zsh/site-functions/aws_zsh_completer.sh"
+
+    # TODO docker-compose completion not working
+    # in .zshrc:
+    #
+    # if [[ ! -z <DOLLAR>{LPZSH_DOCKER} ]]; then
+    #   echo Enabling docker and docker-compose completion
+    #   fpath=(<DOLLAR>{LPZSH_DOCKER} <DOLLAR>fpath)
+    #   autoload compinit && compinit -i
+    #
+    #   source <DOLLAR>{LPZSH_DOCKER_COMPOSE}/docker-compose
+    # fi
+    export LPZSH_DOCKER=${docker}/share/zsh/site-functions
+    export LPZSH_DOCKER_COMPOSE=${docker-compose}/share/bash-completion/completions
+
     figlet -w 160 "${name}"
     zsh
   '';

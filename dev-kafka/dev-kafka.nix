@@ -34,12 +34,13 @@ stdenv.mkDerivation rec {
     sbt-jdk11
     gradle
     maven
-    confluent-platform
-    kafkacat
     awscli
     terraform_0_12
     docker
     docker-compose
+
+    confluent-platform
+    kafkacat
   ];
 
   # TODO layer on top of dev-scala
