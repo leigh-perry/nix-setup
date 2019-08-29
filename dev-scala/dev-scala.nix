@@ -5,21 +5,18 @@ let
   cfg = (import ../jdk/jdk11.nix);
   jdk-name = cfg.jdk-name;
   jdk-sha = cfg.jdk-sha;
+
+  # Docker brings in python37, so use that to avoid clash
+  local-awscli = awscli.override { python = python37; };
+
+  local-jdk11 = callPackage ../jdk/shared-jdk.nix { inherit jdk-name; inherit jdk-sha; };
+
+  sbt-jdk11 = sbt.override { jre = local-jdk11; };
+
 in
 
 stdenv.mkDerivation rec {
   name = "dev-scala";
-
-  local-jdk11 =
-    callPackage ../jdk/shared-jdk.nix {
-      inherit jdk-name;
-      inherit jdk-sha;
-    };
-
-  sbt-jdk11 =
-    sbt.override {
-      jre = local-jdk11;
-    };
 
   buildInputs = [
     # TODO debug credentials for git
@@ -34,12 +31,12 @@ stdenv.mkDerivation rec {
     sbt-jdk11
     gradle
     maven
-    awscli
+
+    local-awscli
     terraform_0_12
 
-    # inhibit docker since it brings in python 3 which breaks awscli
-    #docker
-    #docker-compose
+    docker
+    docker-compose
     
     # For scalajs
     nodejs
