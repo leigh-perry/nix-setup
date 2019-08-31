@@ -24,6 +24,7 @@ stdenv.mkDerivation rec {
     gettext
     tmux
     jq
+    tree
     shellcheck
     figlet
 
