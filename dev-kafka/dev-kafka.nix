@@ -36,8 +36,8 @@ stdenv.mkDerivation rec {
     local-awscli
     terraform_0_12
 
-    docker
-    docker-compose
+    #docker
+    #docker-compose
 
     confluent-platform
     kafkacat
