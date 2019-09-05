@@ -25,6 +25,7 @@ in
       gettext
       tmux
       jq
+      tree
       shellcheck
       figlet
 
