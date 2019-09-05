@@ -3,26 +3,20 @@ with import (builtins.fetchTarball {
   # Descriptive name to make the store path easier to identify
   name = "nixos-unstable-2019-09-02";
   # Commit hash for nixos-unstable as of Mon Sep 2 01:17:20 2019 -0400
-  url = https://github.com/nixos/nixpkgs/archive/2baa9e74c47bcf9df12e3caaa5dd11995b02ba64.tar.gz;
+  url = https://github.com/nixos/nixpkgs/archive/2baa9e74c47bcf9df12e3caaa5dd8995b02ba64.tar.gz;
   # Hash obtained using `nix-prefetch-url --unpack <url>`
   sha256 = "1bnkn7qij10mhssjjx3w39i81vxgadv594yvkxpszahq4csdsf3h";
 }) {};
 
 let
-  cfg = (import ../jdk/jdk11.nix);
-  jdk-name = cfg.jdk-name;
-  jdk-sha = cfg.jdk-sha;
-
   # Docker brings in python37, so use that to avoid clash
   local-awscli = awscli.override { python = python37; };
 
-  local-jdk11 = callPackage ../jdk/shared-jdk.nix { inherit jdk-name; inherit jdk-sha; };
-
-  sbt-jdk11 = sbt.override { jre = local-jdk11; };
+  sbt-jdk8 = sbt.override { jre = jdk8; };
 in
 
 stdenv.mkDerivation rec {
-  name = "dev-scala";
+  name = "dev-spark";
 
   buildInputs = [
     # TODO debug credentials for git
@@ -33,8 +27,8 @@ stdenv.mkDerivation rec {
     shellcheck
     figlet
 
-    local-jdk11
-    sbt-jdk11
+    jdk8
+    sbt-jdk8
     gradle
     maven
 
@@ -43,11 +37,10 @@ stdenv.mkDerivation rec {
 
     docker
     docker-compose
-    
-    # For scalajs
-    nodejs
   ];
 
+  # TODO layer on top of dev-scala
+  # TODO set up proxy here
   shellHook = ''
 
     # in .zshrc:
