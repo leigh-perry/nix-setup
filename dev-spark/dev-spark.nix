@@ -29,8 +29,11 @@ stdenv.mkDerivation rec {
 
     jdk8
     sbt-jdk8
+    scala_2_11
     gradle
     maven
+
+    #spark
 
     local-awscli
     terraform_0_12
