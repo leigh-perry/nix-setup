@@ -9,14 +9,14 @@ with import (builtins.fetchTarball {
 }) {};
 
 let
-  cfg = (import ../jdk/jdk11.nix);
+  cfg = (import jdk/jdk11.nix);
   jdk-name = cfg.jdk-name;
   jdk-sha = cfg.jdk-sha;
 
   # Docker brings in python37, so use that to avoid clash
   local-awscli = awscli.override { python = python37; };
 
-  local-jdk11 = callPackage ../jdk/shared-jdk.nix { inherit jdk-name; inherit jdk-sha; };
+  local-jdk11 = callPackage jdk/shared-jdk.nix { inherit jdk-name; inherit jdk-sha; };
 
   sbt-jdk11 = sbt.override { jre = local-jdk11; };
 in
