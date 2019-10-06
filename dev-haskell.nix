@@ -36,7 +36,7 @@ in
   
       input-ghc
       input-cabal-install
-      input-stack  # thank you mojave
+      #input-stack  # thank you mojave
       input-hlint
       input-hindent
       input-ghcid
