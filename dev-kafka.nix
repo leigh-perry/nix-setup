@@ -9,6 +9,10 @@ with import (builtins.fetchTarball {
 }) {};
 
 let
+  local-jdk11 = callPackage jdk/shared-jdk.nix { inherit jdk-name; inherit jdk-sha; };
+  pkgs = import <nixpkgs> { overlays = [ (self: super: {
+    jdk = local-jdk11;
+  }) ]; }; 
   cfg = (import jdk/jdk11.nix);
   jdk-name = cfg.jdk-name;
   jdk-sha = cfg.jdk-sha;
@@ -16,10 +20,10 @@ let
   # Docker brings in python37, so use that to avoid clash
   local-awscli = awscli.override { python = python37; };
 
-  local-jdk11 = callPackage jdk/shared-jdk.nix { inherit jdk-name; inherit jdk-sha; };
-
   sbt-jdk11 = sbt.override { jre = local-jdk11; };
+
 in
+with pkgs;
 
 stdenv.mkDerivation rec {
   name = "dev-kafka";
