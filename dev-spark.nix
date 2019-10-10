@@ -9,11 +9,18 @@ with import (builtins.fetchTarball {
 }) {};
 
 let
+
+  pkgs = import <nixpkgs> { overlays = [ (self: super: {
+    jdk = jdk8;
+    jre = jdk8;
+  }) ]; }; 
+
   # Docker brings in python37, so use that to avoid clash
   local-awscli = awscli.override { python = python37; };
 
-  sbt-jdk8 = sbt.override { jre = jdk8; };
+  #sbt-jdk8 = sbt.override { jre = jdk8; };
 in
+with pkgs;
 
 stdenv.mkDerivation rec {
   name = "dev-spark";
@@ -28,12 +35,10 @@ stdenv.mkDerivation rec {
     figlet
 
     jdk8
-    sbt-jdk8
+    sbt
     scala_2_11
     gradle
     maven
-
-    #spark
 
     local-awscli
     terraform_0_12
