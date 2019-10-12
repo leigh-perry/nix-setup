@@ -22,7 +22,6 @@ let
   local-awscli = awscli.override { python = python37; };
 
 in
-with pkgs;
 
 stdenv.mkDerivation rec {
   name = "dev-kafka";

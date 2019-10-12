@@ -21,7 +21,6 @@ let
   # Docker brings in python37, so use that to avoid clash
   local-awscli = awscli.override { python = python37; };
 in
-with pkgs;
 
 stdenv.mkDerivation rec {
   name = "dev-scala";

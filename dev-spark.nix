@@ -20,7 +20,6 @@ let
 
   #sbt-jdk8 = sbt.override { jre = jdk8; };
 in
-with pkgs;
 
 stdenv.mkDerivation rec {
   name = "dev-spark";
