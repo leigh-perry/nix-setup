@@ -48,6 +48,9 @@ stdenv.mkDerivation rec {
     
     # For scalajs
     nodejs
+
+    # For docusaurus
+    yarn
   ];
 
   shellHook = ''
