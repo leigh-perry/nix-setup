@@ -45,6 +45,9 @@ stdenv.mkDerivation rec {
 
     #docker
     #docker-compose
+
+    # For ci-release / travis / mavencentral / sonatype
+    gnupg
     
     # For scalajs
     nodejs
