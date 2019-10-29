@@ -37,6 +37,7 @@ stdenv.mkDerivation rec {
 
     local-jdk11
     sbt
+    bloop
     ammonite
     gradle
     maven
