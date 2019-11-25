@@ -10,13 +10,13 @@ in
 stdenv.mkDerivation rec {
   name = "jdk-11";
 
-  local-jdk11 =
+  use-jdk =
     callPackage ./shared-jdk.nix {
       inherit jdk-name;
       inherit jdk-sha;
     };
 
   buildInputs = [
-    local-jdk11
+    use-jdk
   ];
 }

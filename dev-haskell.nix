@@ -1,11 +1,11 @@
 { pkgs ? import <nixpkgs> {} }:
 with import (builtins.fetchTarball {
   # Descriptive name to make the store path easier to identify
-  name = "nixos-unstable-2019-11-10";
-  # Commit hash for nixos-unstable as of 11 Nov 2019
-  url = https://github.com/nixos/nixpkgs/archive/bef773ed53f3d535792d7d7ff3ea50a3deeb1cdd.tar.gz;
+  name = "nixos-unstable-2019-11-25";
+  # Commit hash for nixos-unstable as of 2019-11-25 - get from head (git log)
+  url = https://github.com/nixos/nixpkgs/archive/aa7efea848f5f936a86ea3c4dcd582df0b57699d.tar.gz;
   # Hash obtained using `nix-prefetch-url --unpack <url>`
-  sha256 = "0jhkh6gjdfwk398lkmzb16dgg6h6xyq5l7bh3sa3iw46byfk5i16";
+  sha256 = "16wzghfxl9a4lvmvhxy6vgkdvb3b77dr9avbzzgfgxp2bcafbavb";
 }) {};
 
 let
