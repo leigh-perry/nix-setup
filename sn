@@ -1,0 +1,42 @@
+#!/bin/bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+envprefix=LPNIXSHELL_
+
+shortcut() {
+  export ${envprefix}$1=$2
+}
+
+fetch() {
+  echo $(env | grep "${envprefix}$1=" | perl -pe 'chomp')
+}
+
+if [[ -n "${IN_NIX_SHELL}" ]]; then
+
+  read -n1 -r -p "Already in Nix shell, press space/enter to continue, any other key to cancel..." key
+
+  if [ "$key" != '' ]; then
+    echo "Cancelled"
+    exit 1
+  fi
+fi
+
+
+shortcut scala  ~/dev/lp/nix-setup/dev-scala.nix
+shortcut haskell  ~/dev/lp/nix-setup/dev-haskell.nix
+shortcut kafka  ~/dev/lp/nix-setup/dev-kafka.nix
+shortcut spark  ~/dev/lp/nix-setup/dev-spark.nix
+
+derivationdir=$(fetch $1)
+if [[ -z "${derivationdir// }" ]]; then
+
+  echo Choices:
+  env | grep ${envprefix} | sort | sed -e 's/'${envprefix}'//' | sed -e 's/=/ => /' | sed -e 's/^/  /'
+  echo Master here: ~/dev/oss/nixpkgs/pkgs/top-level/all-packages.nix
+
+else
+  nix-shell --show-trace $(cut -d "=" -f 2 <<< "$derivationdir")
+
+fi
+
+while read var; do unset $var; done < <(env | grep ${envprefix} | cut -d "=" -f 1)
