@@ -16,6 +16,8 @@ let
   input-hindent = haskell.lib.justStaticExecutables haskellPackages.hindent;
   input-ghcid = haskell.lib.justStaticExecutables haskellPackages.ghcid;
   input-cabal2nix = cabal2nix;
+  pointfree = haskell.lib.justStaticExecutables haskellPackages.pointfree;
+  pointful = haskell.lib.justStaticExecutables haskellPackages.pointful;
 in
   stdenv.mkDerivation rec {
     name = "dev-haskell";
@@ -41,6 +43,9 @@ in
       input-hindent
       input-ghcid
       input-cabal2nix
+
+      pointfree
+      # pointful
     ];
   
     shellHook = ''
