@@ -1,33 +1,40 @@
 #!/bin/bash
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-
-envprefix=LPNIXSHELL_
+envprefix=SN_OPTION_
+snflagprefix=SN_NIX_SHELL_
 
 shortcut() {
-  export ${envprefix}$1=$2
+  export ${envprefix}"$1"="$2"
 }
 
 fetch() {
   echo $(env | grep "${envprefix}$1=" | perl -pe 'chomp')
 }
 
-if [[ -n "${IN_NIX_SHELL}" ]]; then
+getenvvar() {
+  printenv "$1"
+}
 
-  read -n1 -r -p "Already in Nix shell, press space/enter to continue, any other key to cancel..." key
+iterm2_set_user_var () {
+  printf "\033]1337;SetUserVar=%s=%s\007" "$1" $(printf "%s" "$2" | base64 | tr -d '\n')
+}
 
-  if [ "$key" != '' ]; then
-    echo "Cancelled"
-    exit 1
-  fi
+shortcut aws       ~/dev/lp/nix-setup/aws.nix
+shortcut haskell   ~/dev/lp/nix-setup/haskell.nix
+shortcut kafka     ~/dev/lp/nix-setup/kafka.nix
+shortcut scala     ~/dev/lp/nix-setup/scala.nix
+shortcut shell     ~/dev/lp/nix-setup/shell.nix
+shortcut spark     ~/dev/lp/nix-setup/spark.nix
+shortcut terraform ~/dev/lp/nix-setup/terraform.nix
+
+snflag="${snflagprefix}$1"
+
+
+if [[ -n $(getenvvar "${snflag}") ]]; then
+  echo "Already in Nix for $1"
+  exit 1
 fi
 
-
-shortcut scala  ~/dev/lp/nix-setup/dev-scala.nix
-shortcut haskell  ~/dev/lp/nix-setup/dev-haskell.nix
-shortcut kafka  ~/dev/lp/nix-setup/dev-kafka.nix
-shortcut spark  ~/dev/lp/nix-setup/dev-spark.nix
-
-derivationdir=$(fetch $1)
+derivationdir=$(fetch "$1")
 if [[ -z "${derivationdir// }" ]]; then
 
   echo Choices:
@@ -35,8 +42,10 @@ if [[ -z "${derivationdir// }" ]]; then
   echo Master here: ~/dev/oss/nixpkgs/pkgs/top-level/all-packages.nix
 
 else
+  export "${snflag}"=indeed
+  export snshells="$1 ${snshells}"
+  iterm2_set_user_var badgeText "${snshells}"
   nix-shell --show-trace $(cut -d "=" -f 2 <<< "$derivationdir")
-
 fi
 
 while read var; do unset $var; done < <(env | grep ${envprefix} | cut -d "=" -f 1)

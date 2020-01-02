@@ -20,16 +20,10 @@ let
   pointful = haskell.lib.justStaticExecutables haskellPackages.pointful;
 in
   stdenv.mkDerivation rec {
-    name = "dev-haskell";
+    name = "Haskell";
   
     buildInputs = [
-      #git
-      gettext
-      tmux
-      jq
-      tree
-      shellcheck
-      figlet
+      #figlet
 
       # NOTE: in `all-packages.nix`:
       # cabal-install = haskell.lib.justStaticExecutables haskellPackages.cabal-install;
@@ -49,7 +43,6 @@ in
     ];
   
     shellHook = ''
-      figlet -w 160 "${name}"
-      zsh
+      #figlet -w 160 "${name}"
     '';
   }
