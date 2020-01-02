@@ -43,9 +43,12 @@ if [[ -z "${derivationdir// }" ]]; then
 
 else
   export "${snflag}"=indeed
-  export snshells="$1 ${snshells}"
+  prevsnshells="${snshells}"
+  export snshells="$1 ${prevsnshells}"
   iterm2_set_user_var badgeText "${snshells}"
   nix-shell --show-trace $(cut -d "=" -f 2 <<< "$derivationdir")
+  
+  iterm2_set_user_var badgeText "${prevsnshells}"
 fi
 
 while read var; do unset $var; done < <(env | grep ${envprefix} | cut -d "=" -f 1)
