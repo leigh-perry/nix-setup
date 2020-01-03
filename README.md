@@ -33,3 +33,18 @@ Currently supported shell-name values are
 
 After loading the specified Nix shells, `sn` then invokes `zsh`.
 If you don't use zsh, hack the `sn` script accordingly.
+
+> NOTE: The `shellutil` shell-name is always added to the specified list. 
+
+## Example
+
+```bash
+sn scala aws terraform
+```
+```bash
+Entering Nix shell for shellutil
+Entering Nix shell for scala
+Entering Nix shell for aws
+Entering Nix shell for terraform
+Entering zsh
+```
