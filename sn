@@ -18,37 +18,79 @@ iterm2_set_user_var () {
   printf "\033]1337;SetUserVar=%s=%s\007" "$1" $(printf "%s" "$2" | base64 | tr -d '\n')
 }
 
-shortcut aws       ~/dev/lp/nix-setup/aws.nix
-shortcut haskell   ~/dev/lp/nix-setup/haskell.nix
-shortcut kafka     ~/dev/lp/nix-setup/kafka.nix
-shortcut scala     ~/dev/lp/nix-setup/scala.nix
-shortcut shell     ~/dev/lp/nix-setup/shell.nix
-shortcut spark     ~/dev/lp/nix-setup/spark.nix
-shortcut terraform ~/dev/lp/nix-setup/terraform.nix
-
-snflag="${snflagprefix}$1"
-
-
-if [[ -n $(getenvvar "${snflag}") ]]; then
-  echo "Already in Nix for $1"
-  exit 1
-fi
-
-derivationdir=$(fetch "$1")
-if [[ -z "${derivationdir// }" ]]; then
-
-  echo Choices:
-  env | grep ${envprefix} | sort | sed -e 's/'${envprefix}'//' | sed -e 's/=/ => /' | sed -e 's/^/  /'
-  echo Master here: ~/dev/oss/nixpkgs/pkgs/top-level/all-packages.nix
-
-else
-  export "${snflag}"=indeed
+invokeshell () {
   prevsnshells="${snshells}"
-  export snshells="$1 ${prevsnshells}"
+  export snshells="${thisshell} ${prevsnshells}"
   iterm2_set_user_var badgeText "${snshells}"
-  nix-shell --show-trace $(cut -d "=" -f 2 <<< "$derivationdir")
-  
-  iterm2_set_user_var badgeText "${prevsnshells}"
-fi
 
-while read var; do unset $var; done < <(env | grep ${envprefix} | cut -d "=" -f 1)
+  echo "Entering Nix shell for $thisshell"
+  if [[ -n $1 ]]; then
+    # recurse remaining specified shells
+    nix-shell --show-trace $(cut -d "=" -f 2 <<< "$derivationdir") --run "sn $1 $2 $3 $4 $5 $6 $7 $8 $9"
+  else
+    echo Entering zsh
+    nix-shell --show-trace $(cut -d "=" -f 2 <<< "$derivationdir") --run "zsh"
+  fi
+
+  echo "Leaving Nix shell for $thisshell"
+  iterm2_set_user_var badgeText "${prevsnshells}"
+}
+
+handleshells() {
+  thisshell="$1"
+
+  # mutation ftw
+  shift
+
+  snflag="${snflagprefix}${thisshell}"
+
+  if [[ -n $(getenvvar "${snflag}") ]]; then
+    #echo "Already in Nix for ${thisshell}"
+
+    if [[ -n $1 ]]; then
+      # ignore this shell and recurse remaining specified shells
+      sn $1 $2 $3 $4 $5 $6 $7 $8 $9
+    else
+      echo Entering zsh
+      zsh
+    fi
+
+  else
+    derivationdir=$(fetch "${thisshell}")
+
+    if [[ -z "${derivationdir// }" ]]; then
+
+      echo "Unknown option ${thisshell} – choices are:"
+      env | grep ${envprefix} | sort | sed -e 's/'${envprefix}'//' | sed -e 's/=/ => /' | sed -e 's/^/  /'
+      echo "Master here: ~/dev/oss/nixpkgs/pkgs/top-level/all-packages.nix"
+      exit 1
+
+    else
+      export "${snflag}"=indeed
+      invokeshell "$@"
+    fi
+
+  fi
+}
+
+main() {
+  shortcut aws          ~/dev/lp/nix-setup/aws.nix
+  shortcut haskell      ~/dev/lp/nix-setup/haskell.nix
+  shortcut kafka        ~/dev/lp/nix-setup/kafka.nix
+  shortcut scala        ~/dev/lp/nix-setup/scala.nix
+  shortcut shellutil    ~/dev/lp/nix-setup/shell.nix
+  shortcut spark        ~/dev/lp/nix-setup/spark.nix
+  shortcut terraform    ~/dev/lp/nix-setup/terraform.nix
+
+  # always add shellutil
+  shutilflag="${snflagprefix}shellutil"
+  if [[ -n $(getenvvar "${shutilflag}") ]]; then
+    handleshells "$@"
+  else
+    handleshells shellutil "$@"
+  fi
+
+  while read var; do unset $var; done < <(env | grep ${envprefix} | cut -d "=" -f 1)
+}
+
+main "$@"

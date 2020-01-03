@@ -24,8 +24,8 @@ in
       tree
       shellcheck
 
-      #docker
-      #docker-compose
+      docker
+      docker-compose
     ];
 
     # TODO set up proxy here
@@ -53,6 +53,6 @@ in
       export LPZSH_DOCKER_COMPOSE=${docker-compose}/share/bash-completion/completions
 
       #figlet -w 160 "${name}"
-      zsh
+      #zsh
     '';
   }
