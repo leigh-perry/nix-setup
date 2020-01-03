@@ -48,3 +48,18 @@ Entering Nix shell for aws
 Entering Nix shell for terraform
 Entering zsh
 ```
+
+# Caveats
+
+1. I haven't tried to make these general.
+They are what work for me.
+You can use them as a starting point for your own requirements.
+Improvement PR's are welcome.
+
+1. Since OS X Mojave 'upgrade', Haskell Stack hasn't worked inside the Nix shell.
+I haven't resolved this yet.
+The workaround is to install it (just Stack) globally.
+
+2. Some of the shell-name derivations clash.
+For instance, `sn scala` sets up JDK 11, whereas `sn spark` sets up JDK 8. 
+If you run `sn spark scala`, expect interesting days.
