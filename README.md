@@ -31,4 +31,5 @@ Currently supported shell-name values are
 | spark         | Scala development for Spark | `nix-setup/spark.nix`      |         
 | terraform     | Terraform tools             | `nix-setup/terraform.nix`  |             
 
-After loading the specified Nix shells, `sn` then invokes 
+After loading the specified Nix shells, `sn` then invokes `zsh`.
+If you don't use zsh, hack the `sn` script accordingly.
