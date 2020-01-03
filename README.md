@@ -41,7 +41,7 @@ If you don't use zsh, hack the `sn` script accordingly.
 ```bash
 sn scala aws terraform
 ```
-```bash
+```
 Entering Nix shell for shellutil
 Entering Nix shell for scala
 Entering Nix shell for aws
