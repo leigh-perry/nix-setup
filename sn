@@ -75,6 +75,7 @@ handleshells() {
 
 main() {
   shortcut aws          ~/dev/lp/nix-setup/aws.nix
+  shortcut gcp          ~/dev/lp/nix-setup/gcp.nix
   shortcut haskell      ~/dev/lp/nix-setup/haskell.nix
   shortcut kafka        ~/dev/lp/nix-setup/kafka.nix
   shortcut scala        ~/dev/lp/nix-setup/scala.nix
