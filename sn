@@ -1,4 +1,6 @@
 #!/bin/bash
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
 envprefix=SN_OPTION_
 snflagprefix=SN_NIX_SHELL_
 
@@ -74,14 +76,14 @@ handleshells() {
 }
 
 main() {
-  shortcut aws          ~/dev/lp/nix-setup/aws.nix
-  shortcut gcp          ~/dev/lp/nix-setup/gcp.nix
-  shortcut haskell      ~/dev/lp/nix-setup/haskell.nix
-  shortcut kafka        ~/dev/lp/nix-setup/kafka.nix
-  shortcut scala        ~/dev/lp/nix-setup/scala.nix
-  shortcut shellutil    ~/dev/lp/nix-setup/shell.nix
-  shortcut spark        ~/dev/lp/nix-setup/spark.nix
-  shortcut terraform    ~/dev/lp/nix-setup/terraform.nix
+  shortcut aws          $DIR/aws.nix
+  shortcut gcp          $DIR/gcp.nix
+  shortcut haskell      $DIR/haskell.nix
+  shortcut kafka        $DIR/kafka.nix
+  shortcut scala        $DIR/scala.nix
+  shortcut shellutil    $DIR/shell.nix
+  shortcut spark        $DIR/spark.nix
+  shortcut terraform    $DIR/terraform.nix
 
   # always add shellutil
   shutilflag="${snflagprefix}shellutil"
