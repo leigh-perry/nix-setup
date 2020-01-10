@@ -28,7 +28,7 @@ invokeshell () {
   echo "Entering Nix shell for $thisshell"
   if [[ -n $1 ]]; then
     # recurse remaining specified shells
-    nix-shell --show-trace $(cut -d "=" -f 2 <<< "$derivationdir") --run "sn $1 $2 $3 $4 $5 $6 $7 $8 $9"
+    nix-shell --show-trace $(cut -d "=" -f 2 <<< "$derivationdir") --run "$DIR/sn $1 $2 $3 $4 $5 $6 $7 $8 $9"
   else
     echo Entering zsh
     nix-shell --show-trace $(cut -d "=" -f 2 <<< "$derivationdir") --run "zsh"
@@ -51,7 +51,7 @@ handleshells() {
 
     if [[ -n $1 ]]; then
       # ignore this shell and recurse remaining specified shells
-      sn $1 $2 $3 $4 $5 $6 $7 $8 $9
+      $DIR/sn $1 $2 $3 $4 $5 $6 $7 $8 $9
     else
       echo Entering zsh
       zsh
