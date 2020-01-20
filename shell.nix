@@ -31,14 +31,6 @@ in
     # TODO set up proxy here
     shellHook = ''
 
-      # in .zshrc:
-      #
-      # if [[ ! -z <DOLLAR>{LPZSH_AWS_COMPLETER} ]]; then
-      #   echo Enabling awscli completion
-      #   source <DOLLAR>{LPZSH_AWS_COMPLETER}
-      # fi
-      export LPZSH_AWS_COMPLETER="${awscli}/share/zsh/site-functions/aws_zsh_completer.sh"
-
       # TODO docker-compose completion not working
       # in .zshrc:
       #

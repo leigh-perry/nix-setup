@@ -20,6 +20,15 @@ in
     ];
 
     shellHook = ''
+
+      # in .zshrc:
+      #
+      # if [[ ! -z <DOLLAR>{LPZSH_AWS_COMPLETER} ]]; then
+      #   echo Enabling AWS CLI completion
+      #   source <DOLLAR>{LPZSH_AWS_COMPLETER}
+      # fi
+      export LPZSH_AWS_COMPLETER="${local-awscli}/share/zsh/site-functions/aws_zsh_completer.sh"
+
       #figlet -w 160 "${name}"
     '';
   }

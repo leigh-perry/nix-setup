@@ -30,7 +30,7 @@ invokeshell () {
     # recurse remaining specified shells
     nix-shell --show-trace $(cut -d "=" -f 2 <<< "$derivationdir") --run "$DIR/sn $1 $2 $3 $4 $5 $6 $7 $8 $9"
   else
-    echo Entering zsh
+    #echo Entering zsh
     nix-shell --show-trace $(cut -d "=" -f 2 <<< "$derivationdir") --run "zsh"
   fi
 
@@ -81,6 +81,7 @@ main() {
   shortcut haskell      $DIR/haskell.nix
   shortcut kafka        $DIR/kafka.nix
   shortcut scala        $DIR/scala.nix
+  shortcut dotty        $DIR/dotty.nix
   shortcut shellutil    $DIR/shell.nix
   shortcut spark        $DIR/spark.nix
   shortcut terraform    $DIR/terraform.nix

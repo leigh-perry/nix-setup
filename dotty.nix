@@ -9,26 +9,26 @@ with import (builtins.fetchTarball {
 }) {};
 
 let
-  gcptools = google-cloud-sdk;
+  use-jdk = jdk11;   # callPackage jdk/shared-jdk.nix { inherit jdk-name; inherit jdk-sha; };
+  pkgs = import <nixpkgs> { overlays = [ (self: super: {
+    jdk = use-jdk;
+    jre = use-jdk;
+  }) ]; }; 
+  # cfg = (import jdk/jdk11.nix);
+  # jdk-name = cfg.jdk-name;
+  # jdk-sha = cfg.jdk-sha;
 in
   stdenv.mkDerivation rec {
-    name = "GCP";
+    name = "Scala";
 
     buildInputs = [
       #figlet
-      gcptools
+      dotty
+      sbt
+      bloop
     ];
 
     shellHook = ''
-
-      # in .zshrc:
-      #
-      # if [[ ! -z <DOLLAR>{LPZSH_GCP_COMPLETER} ]]; then
-      #   echo Enabling GCP CLI completion
-      #   source <DOLLAR>{LPZSH_GCP_COMPLETER}
-      # fi
-      export LPZSH_GCP_COMPLETER="${gcptools}/google-cloud-sdk/completion.zsh.inc"
-
       #figlet -w 160 "${name}"
     '';
   }
