@@ -26,6 +26,7 @@ in
 
       docker
       docker-compose
+      dive
     ];
 
     # TODO set up proxy here
