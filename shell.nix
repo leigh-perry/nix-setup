@@ -24,6 +24,8 @@ in
       tree
       shellcheck
 
+      cntlm
+
       docker
       docker-compose
       dive
