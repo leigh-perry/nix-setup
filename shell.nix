@@ -23,6 +23,7 @@ in
       jq
       tree
       shellcheck
+      watch
 
       cntlm
 
