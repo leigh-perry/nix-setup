@@ -83,6 +83,7 @@ main() {
   shortcut scala        $DIR/scala.nix
   shortcut dotty        $DIR/dotty.nix
   shortcut shellutil    $DIR/shell.nix
+  shortcut dataflow     $DIR/dataflow.nix
   shortcut spark        $DIR/spark.nix
   shortcut terraform    $DIR/terraform.nix
 
