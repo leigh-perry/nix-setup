@@ -1,5 +1,7 @@
-#!/bin/bash
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+#!/usr/bin/env bash
+
+RESOLVED_SOURCE=$(perl -MCwd -le 'print Cwd::abs_path(shift)' "${BASH_SOURCE[0]}")
+DIR=$( cd "$( dirname $RESOLVED_SOURCE )" && pwd )
 
 envprefix=SN_OPTION_
 snflagprefix=SN_NIX_SHELL_
