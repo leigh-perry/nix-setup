@@ -28,7 +28,8 @@ Currently supported shell-name values are
 | kafka         | Kafka tools                 | `nix-setup/kafka.nix`      |         
 | scala         | Scala development           | `nix-setup/scala.nix`      |         
 | shellutil     | Utils for bash or zsh       | `nix-setup/shell.nix`      |         
-| spark         | Scala development for Spark | `nix-setup/spark.nix`      |         
+| dataflow      | Scala development for GCP dataflow (JDK 8 + GCP tools) | `nix-setup/spark.nix`      |         
+| spark         | Scala development for Spark ( JDK 8) | `nix-setup/spark.nix`      |         
 | terraform     | Terraform tools             | `nix-setup/terraform.nix`  |             
 
 After loading the specified Nix shells, `sn` then invokes `zsh`.
