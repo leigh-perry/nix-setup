@@ -32,6 +32,14 @@ in
     ];
 
     shellHook = ''
+      # in .zshrc:
+      #
+      # if [[ ! -z <DOLLAR>{LPZSH_GCP_COMPLETER} ]]; then
+      #   echo Enabling GCP CLI completion
+      #   source <DOLLAR>{LPZSH_GCP_COMPLETER}
+      # fi
+      export LPZSH_GCP_COMPLETER="${gcptools}/google-cloud-sdk/completion.zsh.inc"
+
       #figlet -w 160 "${name}"
     '';
   }
