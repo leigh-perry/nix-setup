@@ -88,6 +88,7 @@ main() {
   shortcut dataflow     $DIR/dataflow.nix
   shortcut spark        $DIR/spark.nix
   shortcut terraform    $DIR/terraform.nix
+  shortcut nodejs       $DIR/nodejs.nix
 
   # always add shellutil
   shutilflag="${snflagprefix}shellutil"
