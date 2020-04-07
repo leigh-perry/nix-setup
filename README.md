@@ -1,7 +1,6 @@
 # nix-setup
 
-[![Powered by Nix](https://img.shields.io/badge/powered%20by-nix-blue.svg)](https://nixos.org/nix/)
-![Nix status](https://img.shields.io/badge/Bit-funky-orange.svg)
+[![Powered by Nix](https://img.shields.io/badge/infuriated%20by-nix-blue.svg)](https://nixos.org/nix/)
 ![Grain free](https://img.shields.io/badge/grain-free-orange.svg)
 
 # Introduction
