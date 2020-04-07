@@ -1,7 +1,8 @@
 # nix-setup
 
 [![Powered by Nix](https://img.shields.io/badge/infuriated%20by-nix-blue.svg)](https://nixos.org/nix/)
-![Grain free](https://img.shields.io/badge/grain-free-orange.svg)
+![Very scientific](https://img.shields.io/badge/science-free-orange.svg)
+![Reasoned development](https://img.shields.io/badge/head-butted-orange.svg)
 
 # Introduction
 
