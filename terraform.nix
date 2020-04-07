@@ -9,7 +9,9 @@ with import (builtins.fetchTarball {
 }) {};
 
 let
-  dummy = dummy;
+  select_plugins = p: [ p.google p.google-beta p.null ];
+  app_terraform = { full = pkgs.terraform.withPlugins select_plugins; };
+  app_terragrunt = pkgs.terragrunt.override { terraform = app_terraform; };
 in
   stdenv.mkDerivation rec {
     name = "Terraform";
@@ -17,6 +19,7 @@ in
     buildInputs = [
       #figlet
       terraform_0_12
+      app_terragrunt
     ];
 
     shellHook = ''
