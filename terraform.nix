@@ -3,9 +3,9 @@ with import (builtins.fetchTarball {
   # Descriptive name to make the store path easier to identify
   name = "nixos-unstable-2020-02-24";
   # Commit hash for nixos-unstable as of 2020-02-24 - get from head (git log)
-  url = https://github.com/nixos/nixpkgs/archive/dc436efc90cf604d533e682da4a82cad3a0a7aaf.tar.gz;
-  # Hash obtained using `nix-prefetch-url --unpack <url>`
-  sha256 = "1wizx2x3qrq54fs6gd7ngmdzf6577g8vwpmzhzaci8fh0fmrdpkb";
+  url = https://github.com/nixos/nixpkgs/archive/069f62de77c5e1887159f560cee0ebab05e752c1.tar.gz;
+  # Hash obtained using `nix-prefetch-url --unpack https://github.com/nixos/nixpkgs/archive/069f62de77c5e1887159f560cee0ebab05e752c1.tar.gz`
+  sha256 = "0ck6mb6iaaw4fi1gy5nxsl68r5vx523b2zbjx2xrh302h82jwvbl";
 }) {};
 
 let
