@@ -24,6 +24,8 @@ in
       tree
       shellcheck
       watch
+      ripgrep
+      bat
 
       cntlm
 
