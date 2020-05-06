@@ -89,6 +89,7 @@ main() {
   shortcut spark        $DIR/spark.nix
   shortcut terraform    $DIR/terraform.nix
   shortcut nodejs       $DIR/nodejs.nix
+  shortcut postgres     $DIR/postgres.nix
 
   # always add shellutil
   shutilflag="${snflagprefix}shellutil"
