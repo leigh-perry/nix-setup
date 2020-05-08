@@ -24,7 +24,7 @@ in
       shellcheck
       watch
       ripgrep
-      bat
+      #bat
 
       cntlm
 
