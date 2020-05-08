@@ -26,6 +26,8 @@ in
       ripgrep
       #bat
 
+      neovim
+
       cntlm
 
       docker
