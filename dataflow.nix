@@ -22,6 +22,7 @@ in
       #figlet
       use-jdk
       sbt
+      coursier
       bloop
       ammonite
       gradle

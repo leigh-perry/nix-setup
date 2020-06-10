@@ -21,6 +21,7 @@ stdenv.mkDerivation rec {
   buildInputs = [
     jdk
     sbt
+    coursier
     bloop
     ammonite
     gradle
