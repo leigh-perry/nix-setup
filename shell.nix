@@ -25,6 +25,7 @@ in
       pkgs.watch
       pkgs.ripgrep
       pkgs.bat
+      pkgs.fzf
 
       pkgs.neovim
 
