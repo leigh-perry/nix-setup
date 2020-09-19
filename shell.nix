@@ -27,6 +27,7 @@ in
       pkgs.bat
       pkgs.fzf
       pkgs.fd
+      pkgs.gron
 
       pkgs.neovim
 
