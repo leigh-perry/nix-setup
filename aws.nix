@@ -20,6 +20,7 @@ in
     buildInputs = [
       #figlet
       local-awscli
+      pkgs.amazon-ecs-cli
     ];
 
     shellHook = ''
