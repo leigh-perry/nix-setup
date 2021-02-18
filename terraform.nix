@@ -3,26 +3,26 @@ let
     import (
       builtins.fetchTarball {
         # Descriptive name to make the store path easier to identify
-        name = "nixos-unstable-2020-10-06";
-        # Commit hash for nixos-unstable as of 2020-10-06 - get from head (git log)
-        url = https://github.com/nixos/nixpkgs/archive/84d74ae9c9cbed73274b8e4e00be14688ffc93fe.tar.gz;
+        name = "nixos-unstable-2021-01-27";
+        # Commit hash for nixos-unstable as of 2021-01-27 - get from head (git log)
+        url = https://github.com/nixos/nixpkgs/archive/891f607d5301d6730cb1f9dcf3618bcb1ab7f10e.tar.gz;
         # Hash obtained using `nix-prefetch-url --unpack <url>`
-        sha256 = "0ww70kl08rpcsxb9xdx8m48vz41dpss4hh3vvsmswll35l158x0v";
+        sha256 = "1cr39f0sbr0h5d83dv1q34mcpwnkwwbdk5fqlyqp2mnxghzwssng";
       }
     ) {
     };
 
   select_plugins = p: [ p.google p.google-beta p.null ];
-  app_terraform = { full = pkgs.terraform.withPlugins select_plugins; };
-  app_terragrunt = pkgs.terragrunt.override { terraform = app_terraform; };
+  app_terraform = { full = pkgs.terraform_0_14.withPlugins select_plugins; };
+  app_terragrunt = pkgs.terragrunt;
 in
   pkgs.stdenv.mkDerivation rec {
     name = "Terraform";
 
     buildInputs = [
       #figlet
-      pkgs.terraform_0_13
-      app_terragrunt
+      pkgs.terraform_0_14
+      pkgs.terragrunt
     ];
 
     shellHook = ''
