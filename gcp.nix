@@ -3,11 +3,11 @@ let
     import (
       builtins.fetchTarball {
         # Descriptive name to make the store path easier to identify
-        name = "nixos-unstable-2020-05-08";
-        # Commit hash for nixos-unstable as of 2020-05-08 - get from head (git log)
-        url = https://github.com/nixos/nixpkgs/archive/d78ba41a5604c8e06d40756a2436e52169354d36.tar.gz;
+        name = "nixos-unstable-2021-01-27";
+        # Commit hash for nixos-unstable as of 2021-01-27 - get from head (git log)
+        url = https://github.com/nixos/nixpkgs/archive/891f607d5301d6730cb1f9dcf3618bcb1ab7f10e.tar.gz;
         # Hash obtained using `nix-prefetch-url --unpack <url>`
-        sha256 = "0bk81ddx1iq8i0nhg1i44kllihphyzhbc416zgylli0ycphknrkv";
+        sha256 = "1cr39f0sbr0h5d83dv1q34mcpwnkwwbdk5fqlyqp2mnxghzwssng";
       }
     ) {
     };
@@ -20,6 +20,8 @@ in
     buildInputs = [
       #figlet
       gcptools
+      pkgs.kubernetes-helm
+      pkgs.kubectl
     ];
 
     shellHook = ''
