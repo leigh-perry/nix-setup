@@ -18,10 +18,7 @@ let
       ) ];
     };
 
-  use-jdk = pkgs.jdk11;   # callPackage jdk/shared-jdk.nix { inherit jdk-name; inherit jdk-sha; };
-  # cfg = (import jdk/jdk11.nix);
-  # jdk-name = cfg.jdk-name;
-  # jdk-sha = cfg.jdk-sha;
+  use-jdk = pkgs.jdk14;   # callPackage jdk/shared-jdk.nix { inherit jdk-name; inherit jdk-sha; };
 in
   pkgs.stdenv.mkDerivation rec {
     name = "Scala";

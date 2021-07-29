@@ -1,5 +1,6 @@
 let
   pkgs =
+    #import <nixpkgs> {};
     import (
       builtins.fetchTarball {
         # Descriptive name to make the store path easier to identify
