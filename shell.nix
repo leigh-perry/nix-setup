@@ -21,9 +21,9 @@ in
       #pkgs.tmux
       pkgs.jq
       pkgs.tree
-      #pkgs.shellcheck
+      pkgs.shellcheck
       pkgs.watch
-      #pkgs.ripgrep
+      pkgs.ripgrep
       #pkgs.bat
       pkgs.fzf
       pkgs.fd
