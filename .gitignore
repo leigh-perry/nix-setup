@@ -1,6 +1,7 @@
 .bloop
 .metals
 .terraform
+.vscode/
 *.pem
 app.*.log.gz
 *.tfstate*
