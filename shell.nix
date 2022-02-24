@@ -4,10 +4,10 @@ let
       builtins.fetchTarball {
         # Descriptive name to make the store path easier to identify
         name = "nixos-unstable-2022-01-03";
-        # Commit hash for nixos-unstable as of 2022-01-03 - get from head (git log)
-        url = https://github.com/nixos/nixpkgs/archive/59bfda72480496f32787cec8c557182738b1bd3f.tar.gz;
+        # Commit hash for nixos-unstable as of 2022-01-27 - get from head (git log)
+        url = https://github.com/nixos/nixpkgs/archive/bfd901466794ecaba6614357816b0aa1fe70b7bf.tar.gz;
         # Hash obtained using `nix-prefetch-url --unpack <url>`
-        sha256 = "18akd1chfvniq1q774rigfxgmxwi0wyjljpa1j9ls59szpzr316d";
+        sha256 = "18rj7fpb90ijb78fgc7mmrizsznhragm43k9192y5ddpbx1q8kxa";
       }
     ) {
     };
@@ -28,6 +28,7 @@ in
       pkgs.fzf
       pkgs.fd
       pkgs.gron
+      pkgs.htop
 
       pkgs.neovim
 
