@@ -29,6 +29,7 @@ in
       pkgs.fd
       pkgs.gron
       pkgs.htop
+      pkgs.direnv
 
       pkgs.neovim
 
