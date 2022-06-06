@@ -32,6 +32,8 @@ in
     pkgs.gradle
     pkgs.maven
     pkgs.scala-cli
+    
+    pkgs.graphviz
 
     # For ci-release / travis / mavencentral / sonatype
     pkgs.gnupg
