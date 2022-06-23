@@ -5,9 +5,9 @@ let
         # Descriptive name to make the store path easier to identify
         name = "nixos-unstable-2021-07-27";
         # Commit hash for nixos-unstable as of 2021-07-27 - get from head (git log)
-        url = https://github.com/nixos/nixpkgs/archive/dd14e5d78e90a2ccd6007e569820de9b4861a6c2.tar.gz;
+        url = https://github.com/nixos/nixpkgs/archive/e1e08fe28bf0588a41cd556eac40b98d2793da99.tar.gz;
         # Hash obtained using `nix-prefetch-url --unpack <url>`
-        sha256 = "1zmhwx1qqgl1wrrb9mjkck508887rldrnragvximhd7jrh1ya3fb";
+        sha256 = "0abzal2gwzin9g7l4k2kll0hpjs3igacqq55k485fa4gb54s3f01";
       }
     ) {
     };
