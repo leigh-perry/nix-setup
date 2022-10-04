@@ -27,11 +27,11 @@ in
     pkgs.jdk
     pkgs.sbt
     pkgs.coursier
-    pkgs.bloop
+    #pkgs.bloop
     pkgs.ammonite
     pkgs.gradle
     pkgs.maven
-    pkgs.scala-cli
+    #pkgs.scala-cli
     
     pkgs.graphviz
 
