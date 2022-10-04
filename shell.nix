@@ -30,6 +30,7 @@ in
       pkgs.gron
       pkgs.htop
       pkgs.direnv
+      pkgs.just
 
       pkgs.neovim
 
