@@ -3,11 +3,11 @@ let
     import (
       builtins.fetchTarball {
         # Descriptive name to make the store path easier to identify
-        name = "nixos-unstable-2022-01-03";
-        # Commit hash for nixos-unstable as of 2022-01-27 - get from head (git log)
-        url = https://github.com/nixos/nixpkgs/archive/bfd901466794ecaba6614357816b0aa1fe70b7bf.tar.gz;
+        name = "nixos-unstable-2022-06-23";
+        # Commit hash for nixos-unstable as of 2022-06-23 - get from head (git log)
+        url = https://github.com/nixos/nixpkgs/archive/e1e08fe28bf0588a41cd556eac40b98d2793da99.tar.gz;
         # Hash obtained using `nix-prefetch-url --unpack <url>`
-        sha256 = "18rj7fpb90ijb78fgc7mmrizsznhragm43k9192y5ddpbx1q8kxa";
+        sha256 = "0abzal2gwzin9g7l4k2kll0hpjs3igacqq55k485fa4gb54s3f01";
       }
     ) {
       overlays = [ (
