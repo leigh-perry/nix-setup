@@ -22,16 +22,20 @@ To invoke a set of Nix shells, type `sn <shell-name> <shell-name> ... <shell-nam
 
 Currently supported shell-name values are
 
-| shell-name    | Description                 | Derivation                 |
-| ------------- |-----------------------------| ---------------------------|
-| aws           | AWS CLI                     | `nix-setup/aws.nix`        |       
-| haskell       | Haskell development         | `nix-setup/haskell.nix`    |           
-| kafka         | Kafka tools                 | `nix-setup/kafka.nix`      |         
-| scala         | Scala development           | `nix-setup/scala.nix`      |         
-| shellutil     | Utils for bash or zsh       | `nix-setup/shell.nix`      |         
-| dataflow      | Scala development for GCP dataflow (JDK 8 + GCP tools) | `nix-setup/dataflow.nix`      |         
-| spark         | Scala development for Spark (JDK 8) | `nix-setup/spark.nix`      |         
-| terraform     | Terraform tools             | `nix-setup/terraform.nix`  |             
+| shell-name | Description                                            | Derivation                |
+|------------|--------------------------------------------------------|---------------------------|
+| aws        | AWS CLI                                                | `nix-setup/aws.nix`       |       
+| dataflow   | Scala development for GCP dataflow (JDK 8 + GCP tools) | `nix-setup/dataflow.nix`  |         
+| dotty      | Scala 3                                                | `nix-setup/dotty.nix`     |         
+| gcp        | GCP + K8 tools                                         | `nix-setup/gcp.nix`       |         
+| haskell    | Haskell development                                    | `nix-setup/haskell.nix`   |           
+| kafka      | Kafka tools                                            | `nix-setup/kafka.nix`     |         
+| nodejs     | NodeJS                                                 | `nix-setup/nodejs.nix`    |         
+| postgres   | Postgres                                               | `nix-setup/postgres.nix`  |         
+| scala      | Scala development                                      | `nix-setup/scala.nix`     |         
+| shellutil  | Utils for bash or zsh                                  | `nix-setup/shell.nix`     |         
+| spark      | Scala development for Spark (JDK 8)                    | `nix-setup/spark.nix`     |         
+| terraform  | Terraform tools                                        | `nix-setup/terraform.nix` |             
 
 After loading the specified Nix shells, `sn` then invokes `zsh`.
 If you don't use zsh, hack the `sn` script accordingly.
