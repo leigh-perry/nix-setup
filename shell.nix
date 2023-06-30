@@ -3,11 +3,11 @@ let
     import (
       builtins.fetchTarball {
         # Descriptive name to make the store path easier to identify
-        name = "nixos-unstable-2022-01-03";
-        # Commit hash for nixos-unstable as of 2022-01-27 - get from head (git log)
-        url = https://github.com/nixos/nixpkgs/archive/bfd901466794ecaba6614357816b0aa1fe70b7bf.tar.gz;
+        name = "nixos-unstable-2023-04-13";
+        # Commit hash for nixos-unstable as of 2023-04-13 - get from head (git log)
+        url = https://github.com/nixos/nixpkgs/archive/0c4800d579af4ed98ecc47d464a5e7b0870c4b1f.tar.gz;
         # Hash obtained using `nix-prefetch-url --unpack <url>`
-        sha256 = "18rj7fpb90ijb78fgc7mmrizsznhragm43k9192y5ddpbx1q8kxa";
+        sha256 = "00gx09447gzgxlzwih4hdj51sdg62xanikkgr4bv4y7fpm98qirq";
       }
     ) {
     };
@@ -20,6 +20,7 @@ in
       pkgs.gettext
       #pkgs.tmux
       pkgs.jq
+      pkgs.yq
       pkgs.tree
       pkgs.shellcheck
       pkgs.watch
