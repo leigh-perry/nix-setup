@@ -3,11 +3,11 @@ let
     import (
       builtins.fetchTarball {
         # Descriptive name to make the store path easier to identify
-        name = "nixos-unstable-2022-06-23";
-        # Commit hash for nixos-unstable as of 2022-06-23 - get from head (git log)
-        url = https://github.com/nixos/nixpkgs/archive/e1e08fe28bf0588a41cd556eac40b98d2793da99.tar.gz;
+        name = "nixos-unstable-2023-08-11";
+        # Commit hash for nixos-unstable as of 2023-08-11 - get from head (git log)
+        url = https://github.com/nixos/nixpkgs/archive/51e7e7a385d5ff46f6215d93cbd7d290a00d1645.tar.gz;
         # Hash obtained using `nix-prefetch-url --unpack <url>`
-        sha256 = "0abzal2gwzin9g7l4k2kll0hpjs3igacqq55k485fa4gb54s3f01";
+        sha256 = "0kbngv3v0xvnx7g2xjx2fxgy99bp6ay3xsk7hrwx3z6gmh1hpbj9";
       }
     ) {
       overlays = [ (
@@ -27,11 +27,11 @@ in
     pkgs.jdk
     pkgs.sbt
     pkgs.coursier
-    #pkgs.bloop
+#   pkgs.bloop
     pkgs.ammonite
     pkgs.gradle
     pkgs.maven
-    #pkgs.scala-cli
+    pkgs.scala-cli
     
     pkgs.graphviz
 
