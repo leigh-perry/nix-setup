@@ -80,6 +80,7 @@ handleshells() {
 main() {
   shortcut aws          $DIR/aws.nix
   shortcut gcp          $DIR/gcp.nix
+  shortcut linkerd      $DIR/linkerd.nix
   shortcut haskell      $DIR/haskell.nix
   shortcut kafka        $DIR/kafka.nix
   shortcut scala        $DIR/scala.nix
